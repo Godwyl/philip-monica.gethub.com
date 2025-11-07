@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philip & Monica | Wedding Invitation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Logo -->
+    <div class="animated-logo" id="animatedLogo">
+        <div class="logo-container">
+            <div class="logo-ring"></div>
+            <div class="logo-ring"></div>
+            <div class="logo-ring"></div>
+            <div class="logo-initials">P&M</div>
+            <div class="logo-heart">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div class="container" id="loginPage">
+        <div class="login-card">
+            <div class="logo">
+                <!-- Ring Image -->
+            <div class="ring-image">
+                <img src="images/Wedding Rings.png" alt="Wedding Rings.png">
+            </div>
+            </div>
+            <h1 class="couple-names">Philip & Monica</h1>
+            <p class="wedding-title">Wedding Invitation</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Guest Name</label>
+                    <input type="text" id="username" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Invitation Code</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Enter your unique code" required>
+                        <button type="button" class="toggle-password" id="togglePassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login-btn">View Invitation</button>
+                
+                <div class="error-message" id="errorMessage">
+                    Invalid credentials. Please check your name and invitation code.
+                </div>
+                
+                <div class="usage-info">
+                    <i class="fas fa-info-circle"></i> Each invitation code can only be used 3 times. After that, it will expire.
+                </div>
+                
+                <button type="button" class="toggle-codes" id="toggleCodes">
+                    Show Available Invitation Codes
+                </button>
+                
+                <div class="codes-list" id="codesList">
+                    <div class="codes-grid" id="codesGrid">
+                        <!-- Codes will be inserted here by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <strong>Code Expired?</strong> Contact Monica Godwyll at monica.godwyll@gmail.com for a new invitation code.
+                </div>
+            </form>
+            
+            <!-- Footer for Login Page -->
+            <div class="footer">
+                Website Developed by <a href="https://kayttech.gh" target="_blank">- KayTechnology.GH</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Welcome Modal -->
+    <div class="welcome-modal" id="welcomeModal">
+        <div class="welcome-content">
+            <button class="welcome-close" id="welcomeClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="welcome-title">Welcome!</h2>
+            <p class="welcome-text">Dear <span id="guestName"></span>,</p>
+            <p class="welcome-text">We're thrilled to have you join us in celebrating our special day. This website contains all the details about our wedding ceremony, reception, and how to RSVP.</p>
+            <p class="welcome-text">Feel free to explore all the sections using the navigation menu above.</p>
+            <button class="continue-btn" id="continueBtn">Continue to Website</button>
+        </div>
+    </div>
+
+    <!-- Wedding Website (Hidden until login) -->
+    <div class="wedding-website" id="weddingWebsite">
+        <!-- Desktop Navigation Bar -->
+        <nav class="nav-bar">
+            <div class="nav-logo">Philip & Monica</div>
+            <div class="nav-links">
+                <a class="nav-link active" data-page="home">Home</a>
+                <a class="nav-link" data-page="details">Details</a>
+                <a class="nav-link" data-page="photos">Our Story</a>
+                <a class="nav-link" data-page="rsvp">RSVP</a>
+                <a class="download-brochure" href="#" id="downloadBrochureBtn">
+                    <i class="fas fa-download"></i> Download Brochure
+                </a>
+            </div>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </nav>
+
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav">
+            <div class="mobile-logo">Philip & Monica</div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a class="mobile-nav-link active" data-page="home">Home</a>
+            <a class="mobile-nav-link" data-page="details">Details</a>
+            <a class="mobile-nav-link" data-page="photos">Our Story</a>
+            <a class="mobile-nav-link" data-page="rsvp">RSVP</a>
+            <a class="mobile-download-brochure" href="#" id="mobileDownloadBrochureBtn">
+                <i class="fas fa-download"></i> Download Brochure
+            </a>
+            <button class="mobile-logout-btn" id="mobileLogoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+
+        <!-- Page Content -->
+        <main class="page-content">
+            <!-- Home Page -->
+            <section class="page active" id="home-page">
+                <div class="wedding-header">
+                    <div class="header-content">
+                        <h4 class="welcome-message">#the3rdlarsenparty</h4>
+                        <h9 class="welcome-message">TOGETHER WITH THEIR FAMILIES</h9>
+                        <h8 class="Welcome-message">HUMBLY INVITES YOU TO THEIR HOLY MATRIMONY<br>BETWEEN THEIR SON AND DAUGTHER</h8>
+                        <br>
+                        <h1 class="couple-names-large">Philip Ritcher Larsen  <br>&</br> Monica Godwyll</h1>
+                        <p class="wedding-date">December 20, 2025</p>
+                        <p class="wedding-location">St. John's Catholic Church</p>
+                        <p>( Pariscoa Sekondi )</p>
+                    </div>
+                </div>
+                
+                <div class="story-section">
+                    <h2>Our Love Story</h2>
+                    <p>COMING SOON</p>
+                    <p>COMING SOON</p>
+                    
+                    <div class="love-story">
+                        <div class="story-milestone">
+                            <i class="fas fa-heart"></i>
+                            <h4>First Meeting</h4>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="story-milestone">
+                            <i class="fas fa-home"></i>
+                            <h4>Colours</h4>
+                            <p>BRIGHT & BOLD </p>
+                        </div>
+                        <div class="story-milestone">
+                            <i class="fas fa-gem"></i>
+                            <h4>Engagement</h4>
+                            <p>Coming Soon!</p>
+                        </div>
+                        <div class="story-milestone">
+                            <i class="fas fa-ring"></i>
+                            <h4>Wedding Day</h4>
+                            <p>December 20, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Details Page -->
+            <section class="page" id="details-page">
+                <div class="section">
+                    <h2 class="section-title">Our Special Day</h2>
+                    <p class="section-description">
+                        We are delighted to invite you to celebrate our wedding day. 
+                        We can't wait to officially become husband and wife and share this joyful moment with our 
+                        closest family and friends.
+                    </p>
+                    
+                    <div class="details-grid">
+                        <div class="detail-card">
+                            <i class="fas fa-church"></i>
+                            <h3>Ceremony</h3>
+                            <p>10:00 AM<br>St. John's Catholic Church<br>Pariscoa, Sekondi</p>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <i class="fas fa-glass-cheers"></i>
+                            <h3>Reception</h3>
+                            <p>Coming Soon!<br>St. John's Catholic Church<br>Pariscoa Sekondi</p>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <i class="fas fa-utensils"></i>
+                            <h3>Dinner & Dancing</h3>
+                            <p>Coming Soon!<br>Coming Soon! <br> Coming Soon!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2 class="section-title">When,Where & Outfit</h2>
+                    <div class="details-grid">
+                        <div class="detail-card">
+                            <i class="far fa-calendar-alt"></i>
+                            <h3>Date & Time</h3>
+                            <p>Saturday, December 20, 2025<br>Ceremony: 10:00 PM<br>Reception: Coming Soon!</p>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Location</h3>
+                            <p>St. John's Catholic Church <br>Pariscoa <br>Sekondi</p>
+                        </div>
+                        
+                        <div class="detail-card">
+                            <i class="fas fa-tshirt"></i>
+                            <h3>Colours</h3>
+                            <p>BRIGHT & BOLD<p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Photos Page -->
+            <section class="page" id="photos-page">
+                <div class="section couple-photos">
+                    <h2 class="section-title">Our Journey Together</h2>
+                    <div class="photo-gallery">
+                        <div class="photo-card">
+                            <div class="photo-img" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')">
+                                <div class="photo-overlay">
+                                    <p>Our first date in Amsterdam</p>
+                                </div>
+                            </div>
+                            <div class="photo-caption">
+                                <h3>The Beginning</h3>
+                                <p>That magical evening when our story began</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <div class="photo-img" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')">
+                                <div class="photo-overlay">
+                                    <p>Exploring Italy together</p>
+                                </div>
+                            </div>
+                            <div class="photo-caption">
+                                <h3>Italian Adventure</h3>
+                                <p>Two weeks exploring the beautiful coast of Italy</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <div class="photo-img" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')">
+                                <div class="photo-overlay">
+                                    <p>Christmas in Copenhagen</p>
+                                </div>
+                            </div>
+                            <div class="photo-caption">
+                                <h3>First Christmas</h3>
+                                <p>Celebrating the holidays in our new home</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <div class="photo-img" style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')">
+                                <div class="photo-overlay">
+                                    <p>The magical proposal</p>
+                                </div>
+                            </div>
+                            <div class="photo-caption">
+                                <h3>She Said Yes!</h3>
+                                <p>Philip proposing at the Eiffel Tower in Paris</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <div class="photo-img" style="background-image: url('https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')">
+                                <div class="photo-overlay">
+                                    <p>Engagement photoshoot</p>
+                                </div>
+                            </div>
+                            <div class="photo-caption">
+                                <h3>Engagement</h3>
+                                <p>Our official engagement photos in the Danish countryside</p>
+                            </div>
+                        </div>
+                        
+                        <div class="photo-card">
+                            <div class="photo-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')">
+                                <div class="photo-overlay">
+                                    <p>Wedding planning fun</p>
+                                </div>
+                            </div>
+                            <div class="photo-caption">
+                                <h3>Planning Together</h3>
+                                <p>Choosing decorations and planning our special day</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RSVP Page -->
+            <section class="page" id="rsvp-page">
+                <div class="section">
+                    <h2 class="section-title">RSVP</h2>
+                    <div class="rsvp-section">
+                        <!-- PIN Entry Section -->
+                        <div class="pin-form" id="pinForm">
+                            <h3>Enter RSVP PIN</h3>
+                            <p class="pin-description">Please enter the PIN code to access RSVP contact information</p>
+                            <input type="password" class="pin-input" id="pinCode" placeholder="Enter 6-digit PIN" maxlength="6">
+                            <div class="pin-error" id="pinError">Invalid PIN code. Please try again.</div>
+                            <button class="pin-submit" id="pinSubmit">Submit PIN</button>
+                        </div>
+                        
+                        <!-- RSVP Content (Hidden until PIN is verified) -->
+                        <div class="rsvp-content" id="rsvpContent">
+                            <p class="rsvp-description">
+                                Please contact our wedding coordinators to confirm your attendance by <strong> December 15, 2025</strong>.
+                            </p>
+                            
+                            <div class="rsvp-contact-list">
+                                <div class="contact-card">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-user-tie"></i>
+                                    </div>
+                                    <div class="contact-name">Mr. Kofi Ackah</div>
+                                    <div class="contact-phone">
+                                        <i class="fas fa-phone"></i> 0543 251 060
+                                    </div>
+                                    <div class="contact-note">Primary Coordinator</div>
+                                </div>
+                                
+                                <div class="contact-card">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-user-friends"></i>
+                                    </div>
+                                    <div class="contact-name">Mrs. Jenifer Manu</div>
+                                    <div class="contact-phone">
+                                        <i class="fas fa-phone"></i> 024 284 7245/ 026 334 3426
+                                    </div>
+                                    <div class="contact-note">Assistant Coordinator</div>
+                                </div>
+                            </div>
+                            
+                            <div class="rsvp-instructions">
+                                <h3><i class="fas fa-info-circle"></i> RSVP Instructions</h3>
+                                <p>• Please call or WhatsApp either coordinator to confirm your attendance</p>
+                                <p>• Let them know the number of guests in your party</p>
+                                <p>• Inform them of any dietary restrictions or special requirements</p>
+                                <p>• RSVP deadline: December 15, 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Website Footer -->
+        <footer class="website-footer">
+            <div class="footer-content">
+                <div class="footer-couple">Philip & Monica - December 20, 2025</div>
+                <div class="footer-developer">
+                    Website Developed by <a href="https://kayttech.gh" target="_blank">Emmanuel Godwyl - KaytTech.GH</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
